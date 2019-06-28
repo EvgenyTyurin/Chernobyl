@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 class WorldLocation {
     private String id;
     private String label;
+    private WorldLocation northLocation;
 
     WorldLocation(String id, String label) {
         this.id = id;

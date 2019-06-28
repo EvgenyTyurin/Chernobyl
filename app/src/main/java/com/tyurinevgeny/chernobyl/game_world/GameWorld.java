@@ -14,8 +14,8 @@ public class GameWorld {
     /** Creates game world from file */
     private GameWorld() {
         // TODO: Load from file
-        worldLocations.add(new WorldLocation("Hall", "Hall"));
-        gamePersons.add(new GamePerson("Ivan Petrov",
+        worldLocations.add(new WorldLocation("1st Floor Hall", "1st Floor Hall"));
+        gamePersons.add(new GamePerson("Petrov",
                 worldLocations.get(0)));
     }
 

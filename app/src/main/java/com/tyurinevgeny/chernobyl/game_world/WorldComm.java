@@ -1,5 +1,9 @@
 package com.tyurinevgeny.chernobyl.game_world;
 
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
 /**
  * Game world communicator
  */
@@ -19,8 +23,14 @@ public class WorldComm {
         return worldComm;
     }
 
-    public String getPersonReport(String name) {
-        return gameWorld.getPerson(name).getReport();
+    public ArrayList<String> getPersonMessages(String name) {
+        GamePerson gamePerson = gameWorld.getPerson(name);
+        if (gamePerson != null) {
+            return gamePerson.getMessageList();
+        }
+        else {
+            return null;
+        }
     }
 
 }
