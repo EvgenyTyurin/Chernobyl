@@ -1,20 +1,36 @@
 package com.tyurinevgeny.chernobyl.game_world;
 
-import android.support.annotation.NonNull;
-
 class WorldLocation {
     private String id;
     private String label;
-    private WorldLocation northLocation;
+    private String description;
+    private String northLocation = "";
 
-    WorldLocation(String id, String label) {
+    WorldLocation(String id, String label, String description) {
         this.id = id;
         this.label = label;
+        this.description = description;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
+    WorldLocation(String id, String label, String description,
+                  String northLocation) {
+        this(id, label, description);
+        this.northLocation = northLocation;
+    }
+
+    String getPassages() {
+        // TODO: Add another directions
+        String passages = "";
+        if(!northLocation.equals(""))
+            passages += "North - " + northLocation + " ";
+        return passages;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLabel() {
         return label;
     }
 }

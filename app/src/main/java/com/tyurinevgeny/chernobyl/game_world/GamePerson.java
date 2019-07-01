@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Game person class
  */
 
-class GamePerson {
+public class GamePerson {
     private String name;
     private WorldLocation currentLocation;
     private ArrayList<String> messageList = new ArrayList<>();
@@ -19,8 +19,10 @@ class GamePerson {
     }
 
     /** Update status of person */
-    public void updateStatus() {
-        String message = name + ": I'm in " + currentLocation;
+    private void updateStatus() {
+        String message = name + ": I'm in " + currentLocation.getLabel() + ". ";
+        message += currentLocation.getDescription();
+        message += "Passages: " + currentLocation.getPassages() + ". ";
         messageList.add(message);
     }
 
@@ -28,7 +30,7 @@ class GamePerson {
         return name;
     }
 
-    public ArrayList<String> getMessageList() {
+    ArrayList<String> getMessageList() {
         return messageList;
     }
 }

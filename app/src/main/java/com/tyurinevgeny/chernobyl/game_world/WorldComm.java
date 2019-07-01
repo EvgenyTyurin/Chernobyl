@@ -1,7 +1,5 @@
 package com.tyurinevgeny.chernobyl.game_world;
 
-import android.widget.ListView;
-
 import java.util.ArrayList;
 
 /**
@@ -31,6 +29,10 @@ public class WorldComm {
         else {
             return null;
         }
+    }
+
+    public ArrayList<GamePerson> getActivePersons() {
+        return gameWorld.getGamePersons();
     }
 
 }

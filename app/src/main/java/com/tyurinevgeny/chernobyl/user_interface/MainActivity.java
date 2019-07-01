@@ -9,6 +9,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.tyurinevgeny.chernobyl.R;
+import com.tyurinevgeny.chernobyl.game_world.GamePerson;
 import com.tyurinevgeny.chernobyl.game_world.GameWorld;
 import com.tyurinevgeny.chernobyl.game_world.WorldComm;
 
@@ -20,11 +21,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    WorldComm worldComm;
+    private final int PERSON_BUTTONS_NUMBER = 2;
+    private WorldComm worldComm;
     // UI elements
-    ListView messagesView;
-    Button pers1Button;
-    ArrayList<String> messageList = new ArrayList<>();
+    private ListView messagesView;
+    private Button[] personButtons = new Button[PERSON_BUTTONS_NUMBER];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,20 +34,37 @@ public class MainActivity extends AppCompatActivity {
         // Set UI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Chatter window init
         messagesView = findViewById(R.id.messages_view);
-        pers1Button = findViewById(R.id.person1_button);
-        pers1Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                persButtonClicked(pers1Button);
+        // Person button init
+        ArrayList<GamePerson> activePersons = worldComm.getActivePersons();
+        for(int buttonIdx = 0; buttonIdx < PERSON_BUTTONS_NUMBER; buttonIdx++) {
+            switch (buttonIdx) {
+                case 0:
+                    personButtons[buttonIdx] = findViewById(R.id.person1_button);
+                    break;
+                case 1:
+                    personButtons[buttonIdx] = findViewById(R.id.person2_button);
+                    break;
             }
-        });
+            final int finalButtonIdx = buttonIdx;
+            personButtons[buttonIdx].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    personButtonClicked(personButtons[finalButtonIdx]);
+                }
+            });
+            if (buttonIdx < activePersons.size()) {
+                personButtons[buttonIdx].setText(activePersons.get(buttonIdx).getName());
+            }
+        }
+
     }
 
-    void persButtonClicked(Button button) {
-        messageList = worldComm.getPersonMessages(button.getText().toString());
+    void personButtonClicked(Button button) {
+        ArrayList<String> messageList = worldComm.getPersonMessages(button.getText().toString());
         final ListAdapter arrayAdapter = new ArrayAdapter<>(this,
-                R.layout.support_simple_spinner_dropdown_item,
+                R.layout.list_item,
                 messageList);
         messagesView.setAdapter(arrayAdapter);
     }

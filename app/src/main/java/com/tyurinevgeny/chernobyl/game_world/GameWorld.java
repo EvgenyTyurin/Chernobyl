@@ -14,8 +14,14 @@ public class GameWorld {
     /** Creates game world from file */
     private GameWorld() {
         // TODO: Load from file
-        worldLocations.add(new WorldLocation("1st Floor Hall", "1st Floor Hall"));
+        worldLocations.add(new WorldLocation("1st Floor Hall", "1st Floor Hall",
+                "It's messy here. Windows are broken, chairs upside down.",
+                "Security Room"));
+        worldLocations.add(new WorldLocation("Security Room", "Security Room",
+                "All lockers open."));
         gamePersons.add(new GamePerson("Petrov",
+                worldLocations.get(0)));
+        gamePersons.add(new GamePerson("Akimov",
                 worldLocations.get(0)));
     }
 
@@ -36,4 +42,7 @@ public class GameWorld {
         return null;
     }
 
+    ArrayList<GamePerson> getGamePersons() {
+        return gamePersons;
+    }
 }
