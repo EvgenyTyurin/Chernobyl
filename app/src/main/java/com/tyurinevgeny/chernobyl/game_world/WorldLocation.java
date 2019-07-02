@@ -1,28 +1,28 @@
 package com.tyurinevgeny.chernobyl.game_world;
 
 class WorldLocation {
-    private String id;
+    private String name;
     private String label;
     private String description;
-    private String northLocation = "";
+    private String northLocationName = "";
 
-    WorldLocation(String id, String label, String description) {
-        this.id = id;
+    WorldLocation(String name, String label, String description) {
+        this.name = name;
         this.label = label;
         this.description = description;
     }
 
-    WorldLocation(String id, String label, String description,
+    WorldLocation(String name, String label, String description,
                   String northLocation) {
-        this(id, label, description);
-        this.northLocation = northLocation;
+        this(name, label, description);
+        this.northLocationName = northLocation;
     }
 
     String getPassages() {
         // TODO: Add another directions
         String passages = "";
-        if(!northLocation.equals(""))
-            passages += "North - " + northLocation + " ";
+        if(!northLocationName.equals(""))
+            passages += "North - " + northLocationName + " ";
         return passages;
     }
 
@@ -32,5 +32,13 @@ class WorldLocation {
 
     public String getLabel() {
         return label;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    String getNorthLocationName() {
+        return northLocationName;
     }
 }

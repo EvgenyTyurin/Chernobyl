@@ -12,6 +12,7 @@ import com.tyurinevgeny.chernobyl.R;
 import com.tyurinevgeny.chernobyl.game_world.GamePerson;
 import com.tyurinevgeny.chernobyl.game_world.GameWorld;
 import com.tyurinevgeny.chernobyl.game_world.WorldComm;
+import com.tyurinevgeny.chernobyl.game_world.WorldDirection;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     // UI elements
     private ListView messagesView;
     private Button[] personButtons = new Button[PERSON_BUTTONS_NUMBER];
+    private String selectedPerson = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // Chatter window init
         messagesView = findViewById(R.id.messages_view);
-        // Person button init
+        // Person buttons init
         ArrayList<GamePerson> activePersons = worldComm.getActivePersons();
         for(int buttonIdx = 0; buttonIdx < PERSON_BUTTONS_NUMBER; buttonIdx++) {
             switch (buttonIdx) {
@@ -58,11 +60,30 @@ public class MainActivity extends AppCompatActivity {
                 personButtons[buttonIdx].setText(activePersons.get(buttonIdx).getName());
             }
         }
+        // Control buttons
+        final Button northButton = findViewById(R.id.north_button);
+        northButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println(selectedPerson);
+                if (!selectedPerson.equals("")) {
+                    worldComm.movePerson(selectedPerson, WorldDirection.NORTH);
+                    updateMessages(selectedPerson);
+                }
+            }
+        });
 
     }
 
-    void personButtonClicked(Button button) {
-        ArrayList<String> messageList = worldComm.getPersonMessages(button.getText().toString());
+    /** Player choose active person */
+    private void personButtonClicked(Button button) {
+        selectedPerson = button.getText().toString();
+        updateMessages(selectedPerson);
+    }
+
+    /** Update person messages in view */
+    private void updateMessages(String personName) {
+        ArrayList<String> messageList = worldComm.getPersonMessages(personName);
         final ListAdapter arrayAdapter = new ArrayAdapter<>(this,
                 R.layout.list_item,
                 messageList);

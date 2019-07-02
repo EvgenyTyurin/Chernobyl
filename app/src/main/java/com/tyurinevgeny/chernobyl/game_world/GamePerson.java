@@ -26,11 +26,20 @@ public class GamePerson {
         messageList.add(message);
     }
 
+    void moveTo(WorldLocation newLocation) {
+        currentLocation = newLocation;
+        updateStatus();
+    }
+
     public String getName() {
         return name;
     }
 
     ArrayList<String> getMessageList() {
         return messageList;
+    }
+
+    WorldLocation getCurrentLocation() {
+        return currentLocation;
     }
 }

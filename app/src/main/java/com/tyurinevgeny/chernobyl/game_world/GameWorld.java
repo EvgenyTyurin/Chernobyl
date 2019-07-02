@@ -33,11 +33,21 @@ public class GameWorld {
         return gameWorld;
     }
 
+    /** @return person by name */
     GamePerson getPerson(String name) {
         for (GamePerson gamePerson : gamePersons) {
             if (gamePerson.getName().equals(name)) {
                 return gamePerson;
             }
+        }
+        return null;
+    }
+
+    /** @return world location by name */
+    WorldLocation getLocation(String name) {
+        for (WorldLocation location : worldLocations) {
+            if (location.getName().equals(name))
+                return location;
         }
         return null;
     }
