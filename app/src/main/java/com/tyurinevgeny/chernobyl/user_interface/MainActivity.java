@@ -65,20 +65,30 @@ public class MainActivity extends AppCompatActivity {
         northButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(selectedPerson);
-                if (!selectedPerson.equals("")) {
-                    worldComm.movePerson(selectedPerson, WorldDirection.NORTH);
-                    updateMessages(selectedPerson);
-                }
+                moveButtonClicked(WorldDirection.NORTH);
             }
         });
-
+        final Button southButton = findViewById(R.id.south_button);
+        southButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveButtonClicked(WorldDirection.SOUTH);
+            }
+        });
     }
 
     /** Player choose active person */
     private void personButtonClicked(Button button) {
         selectedPerson = button.getText().toString();
         updateMessages(selectedPerson);
+    }
+
+    /** Player presses move button */
+    private void moveButtonClicked(WorldDirection direction) {
+        if (!selectedPerson.equals("")) {
+            worldComm.movePerson(selectedPerson, direction);
+            updateMessages(selectedPerson);
+        }
     }
 
     /** Update person messages in view */
@@ -88,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 R.layout.list_item,
                 messageList);
         messagesView.setAdapter(arrayAdapter);
+        messagesView.setSelection(messageList.size() - 1);
     }
 
 }

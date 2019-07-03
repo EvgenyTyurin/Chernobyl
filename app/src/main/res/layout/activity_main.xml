@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/person_buttons_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -32,17 +36,30 @@
             android:text="+" />
     </LinearLayout>
 
+
     <ListView
         android:id="@+id/messages_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8" />
+        android:layout_height="0dp"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/control_buttons_layout"
+        app:layout_constraintTop_toBottomOf="@id/person_buttons_layout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
 
     <LinearLayout
+        android:id="@+id/control_buttons_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/west_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="West" />
 
         <Button
             android:id="@+id/north_button"
@@ -50,5 +67,17 @@
             android:layout_height="wrap_content"
             android:text="North" />
 
+        <Button
+            android:id="@+id/south_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="South" />
+
+        <Button
+            android:id="@+id/east_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="East" />
+
     </LinearLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

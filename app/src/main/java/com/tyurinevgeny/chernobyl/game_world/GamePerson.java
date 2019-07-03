@@ -22,7 +22,7 @@ public class GamePerson {
     private void updateStatus() {
         String message = name + ": I'm in " + currentLocation.getLabel() + ". ";
         message += currentLocation.getDescription();
-        message += "Passages: " + currentLocation.getPassages() + ". ";
+        message += "Passages: " + currentLocation.getPassagesStr() + ". ";
         messageList.add(message);
     }
 

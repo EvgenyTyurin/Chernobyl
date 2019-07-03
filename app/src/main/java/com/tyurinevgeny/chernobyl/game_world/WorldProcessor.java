@@ -23,12 +23,14 @@ class WorldProcessor {
         String result = "";
         GamePerson person = gameWorld.getPerson(personName);
         WorldLocation currentLocation = person.getCurrentLocation();
-        String newLocationName = "";
+        WorldLocation newLocation = null;
         switch (direction) {
-            case NORTH: newLocationName = currentLocation.getNorthLocationName();
-            break;
+            case NORTH:
+                newLocation = currentLocation.getNorthLocation();
+                break;
+            case SOUTH:
+                newLocation = currentLocation.getSouthLocation();
         }
-        WorldLocation newLocation = gameWorld.getLocation(newLocationName);
         if (newLocation != null) {
             person.moveTo(newLocation);
         } else {

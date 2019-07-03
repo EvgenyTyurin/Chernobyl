@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Chernobyl</string>
+    <string-array name="world_locations">
+        <item>1st Floor Hall|1st Floor Hall|It's messy here. Windows are broken, chairs upside down.</item>
+        <item>Security Room|Security Room|All lockers open.</item>
+    </string-array>
 </resources>

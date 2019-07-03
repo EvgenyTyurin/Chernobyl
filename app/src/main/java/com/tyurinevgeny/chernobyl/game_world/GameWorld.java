@@ -3,22 +3,26 @@ package com.tyurinevgeny.chernobyl.game_world;
 import java.util.ArrayList;
 
 /**
- * Game World: Locations, persons
+ * Game World: Locations, passages, persons
  */
 
 public class GameWorld {
     private static GameWorld gameWorld;
     private static ArrayList<WorldLocation> worldLocations = new ArrayList<>();
+    private static ArrayList<LocationsPassage> locationsPassages = new ArrayList<>();
     private static ArrayList<GamePerson> gamePersons = new ArrayList<>();
 
     /** Creates game world from file */
     private GameWorld() {
         // TODO: Load from file
         worldLocations.add(new WorldLocation("1st Floor Hall", "1st Floor Hall",
-                "It's messy here. Windows are broken, chairs upside down.",
-                "Security Room"));
+                "It's messy here. Windows are broken, chairs upside down."));
         worldLocations.add(new WorldLocation("Security Room", "Security Room",
                 "All lockers open."));
+        locationsPassages.add(new LocationsPassage(PassageOrientation.AXIS_Y,
+                "1st Floor Hall",
+                "Security Room",
+                this));
         gamePersons.add(new GamePerson("Petrov",
                 worldLocations.get(0)));
         gamePersons.add(new GamePerson("Akimov",
