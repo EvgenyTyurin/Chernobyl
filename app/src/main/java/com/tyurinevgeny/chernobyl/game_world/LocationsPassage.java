@@ -33,8 +33,8 @@ class LocationsPassage {
                             String location2Name,
                             GameWorld gameWorld) {
         this(orientation,
-                gameWorld.getLocation(location1Name),
-                gameWorld.getLocation(location2Name));
+                gameWorld.getLocationByName(location1Name),
+                gameWorld.getLocationByName(location2Name));
     }
 
     public PassageOrientation getOrientation() {

@@ -12,13 +12,9 @@ public class GameWorld {
     private static ArrayList<LocationsPassage> locationsPassages = new ArrayList<>();
     private static ArrayList<GamePerson> gamePersons = new ArrayList<>();
 
-    /** Creates game world from file */
+    /** Creates game world */
     private GameWorld() {
-        // TODO: Load from file
-        worldLocations.add(new WorldLocation("1st Floor Hall", "1st Floor Hall",
-                "It's messy here. Windows are broken, chairs upside down."));
-        worldLocations.add(new WorldLocation("Security Room", "Security Room",
-                "All lockers open."));
+        WorldLoader.loadFromResources(this);
         locationsPassages.add(new LocationsPassage(PassageOrientation.AXIS_Y,
                 "1st Floor Hall",
                 "Security Room",
@@ -29,7 +25,7 @@ public class GameWorld {
                 worldLocations.get(0)));
     }
 
-    /** @return Game world */
+    /** @return Current game world */
     public static GameWorld getInstance() {
         if (gameWorld == null) {
             gameWorld = new GameWorld();
@@ -37,7 +33,7 @@ public class GameWorld {
         return gameWorld;
     }
 
-    /** @return person by name */
+    /** @return Person by name */
     GamePerson getPerson(String name) {
         for (GamePerson gamePerson : gamePersons) {
             if (gamePerson.getName().equals(name)) {
@@ -47,8 +43,8 @@ public class GameWorld {
         return null;
     }
 
-    /** @return world location by name */
-    WorldLocation getLocation(String name) {
+    /** @return World location by it's name */
+    WorldLocation getLocationByName(String name) {
         for (WorldLocation location : worldLocations) {
             if (location.getName().equals(name))
                 return location;
@@ -58,5 +54,9 @@ public class GameWorld {
 
     ArrayList<GamePerson> getGamePersons() {
         return gamePersons;
+    }
+
+    ArrayList<WorldLocation> getWorldLocations() {
+        return worldLocations;
     }
 }

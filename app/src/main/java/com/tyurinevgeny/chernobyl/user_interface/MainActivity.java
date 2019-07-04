@@ -9,6 +9,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.tyurinevgeny.chernobyl.R;
+import com.tyurinevgeny.chernobyl.ResourcesLoader;
 import com.tyurinevgeny.chernobyl.game_world.GamePerson;
 import com.tyurinevgeny.chernobyl.game_world.GameWorld;
 import com.tyurinevgeny.chernobyl.game_world.WorldComm;
@@ -31,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Start game
+        // Init resources loader
+        ResourcesLoader.getInstance(this);
+        // Create game world and get connection to it
         worldComm = WorldComm.getInstance(GameWorld.getInstance());
         // Set UI
         super.onCreate(savedInstanceState);
