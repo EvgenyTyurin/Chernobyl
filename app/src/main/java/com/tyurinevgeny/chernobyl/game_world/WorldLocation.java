@@ -4,24 +4,18 @@ class WorldLocation {
     private String name;
     private String label;
     private String description;
-    private String northLocationName = "";
     private WorldLocation northLocation;
     private WorldLocation southLocation;
     private WorldLocation eastLocation;
     private WorldLocation westLocation;
     private WorldLocation upLocation;
     private WorldLocation downLocation;
+    private LocationBlocker blocker;
 
     WorldLocation(String name, String label, String description) {
         this.name = name;
         this.label = label;
         this.description = description;
-    }
-
-    WorldLocation(String name, String label, String description,
-                  String northLocation) {
-        this(name, label, description);
-        this.northLocationName = northLocation;
     }
 
     String getPassagesStr() {
@@ -52,7 +46,7 @@ class WorldLocation {
         return description;
     }
 
-    public String getLabel() {
+    String getLabel() {
         return label;
     }
 
@@ -60,59 +54,55 @@ class WorldLocation {
         return name;
     }
 
-    String getNorthLocationName() {
-        return northLocationName;
-    }
-
-    public void setNorthLocationName(String northLocationName) {
-        this.northLocationName = northLocationName;
-    }
-
-    public WorldLocation getNorthLocation() {
+    WorldLocation getNorthLocation() {
         return northLocation;
     }
 
-    public void setNorthLocation(WorldLocation northLocation) {
-        this.northLocation = northLocation;
-    }
+    void setNorthLocation(WorldLocation northLocation) { this.northLocation = northLocation; }
 
-    public WorldLocation getSouthLocation() {
+    WorldLocation getSouthLocation() {
         return southLocation;
     }
 
-    public void setSouthLocation(WorldLocation southLocation) {
-        this.southLocation = southLocation;
-    }
+    void setSouthLocation(WorldLocation southLocation) { this.southLocation = southLocation; }
 
-    public WorldLocation getWestLocation() {
+    WorldLocation getWestLocation() {
         return westLocation;
     }
 
-    public void setWestLocation(WorldLocation westLocation) {
+    void setWestLocation(WorldLocation westLocation) {
         this.westLocation = westLocation;
     }
 
-    public WorldLocation getEastLocation() {
+    WorldLocation getEastLocation() {
         return eastLocation;
     }
 
-    public void setEastLocation(WorldLocation eastLocation) {
+    void setEastLocation(WorldLocation eastLocation) {
         this.eastLocation = eastLocation;
     }
 
-    public WorldLocation getUpLocation() {
+    WorldLocation getUpLocation() {
         return upLocation;
     }
 
-    public void setUpLocation(WorldLocation upLocation) {
+    void setUpLocation(WorldLocation upLocation) {
         this.upLocation = upLocation;
     }
 
-    public WorldLocation getDownLocation() {
+    WorldLocation getDownLocation() {
         return downLocation;
     }
 
-    public void setDownLocation(WorldLocation downLocation) {
+    void setDownLocation(WorldLocation downLocation) {
         this.downLocation = downLocation;
+    }
+
+    LocationBlocker getBlocker() {
+        return blocker;
+    }
+
+    void setBlocker(LocationBlocker blocker) {
+        this.blocker = blocker;
     }
 }

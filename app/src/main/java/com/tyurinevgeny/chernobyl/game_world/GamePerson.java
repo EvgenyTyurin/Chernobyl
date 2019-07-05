@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class GamePerson {
     private String name;
     private WorldLocation currentLocation;
+    private WorldLocation previousLocation;
     private ArrayList<String> messageList = new ArrayList<>();
 
     /** Create new person */
@@ -21,12 +22,17 @@ public class GamePerson {
     /** Update status of person */
     private void updateStatus() {
         String message = name + ": I'm in " + currentLocation.getLabel() + ". ";
-        message += currentLocation.getDescription();
+        message += currentLocation.getDescription() + " ";
+        if (currentLocation.getBlocker() != null) {
+            message += "Blocker: " +
+                    currentLocation.getBlocker().getBlockerType().toString() + ". ";
+        }
         message += "Passages: " + currentLocation.getPassagesStr() + ". ";
         messageList.add(message);
     }
 
     void moveTo(WorldLocation newLocation) {
+        previousLocation = currentLocation;
         currentLocation = newLocation;
         updateStatus();
     }
@@ -42,4 +48,9 @@ public class GamePerson {
     WorldLocation getCurrentLocation() {
         return currentLocation;
     }
+
+    WorldLocation getPreviousLocation() {
+        return previousLocation;
+    }
+
 }

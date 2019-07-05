@@ -19,6 +19,7 @@ class WorldProcessor {
         return worldProcessor;
     }
 
+    /** Move person if possible and return error-message if not */
     String movePerson(String personName, WorldDirection direction) {
         String result = "";
         GamePerson person = gameWorld.getPerson(personName);
@@ -30,6 +31,16 @@ class WorldProcessor {
                 break;
             case SOUTH:
                 newLocation = currentLocation.getSouthLocation();
+                break;
+            case WEST:
+                newLocation = currentLocation.getWestLocation();
+                break;
+            case EAST:
+                newLocation = currentLocation.getEastLocation();
+                break;
+        }
+        if (currentLocation.getBlocker() != null && newLocation != person.getPreviousLocation()) {
+            return"Blocked";
         }
         if (newLocation != null) {
             person.moveTo(newLocation);

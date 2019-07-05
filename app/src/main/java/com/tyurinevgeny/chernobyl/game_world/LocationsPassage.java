@@ -28,7 +28,7 @@ class LocationsPassage {
         }
     }
 
-    public LocationsPassage(PassageOrientation orientation,
+    LocationsPassage(PassageOrientation orientation,
                             String location1Name,
                             String location2Name,
                             GameWorld gameWorld) {
@@ -37,19 +37,11 @@ class LocationsPassage {
                 gameWorld.getLocationByName(location2Name));
     }
 
-    public PassageOrientation getOrientation() {
+    PassageOrientation getOrientation() {
         return orientation;
     }
 
-    public WorldLocation getLocation1() {
-        return location1;
-    }
-
-    public WorldLocation getLocation2() {
-        return location2;
-    }
-
-    public String getId() {
+    String getId() {
         return id;
     }
 }

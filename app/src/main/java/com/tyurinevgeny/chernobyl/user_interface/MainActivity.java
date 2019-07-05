@@ -78,6 +78,20 @@ public class MainActivity extends AppCompatActivity {
                 moveButtonClicked(WorldDirection.SOUTH);
             }
         });
+        final Button eastButton = findViewById(R.id.east_button);
+        eastButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveButtonClicked(WorldDirection.EAST);
+            }
+        });
+        final Button westButton = findViewById(R.id.west_button);
+        westButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveButtonClicked(WorldDirection.WEST);
+            }
+        });
     }
 
     /** Player choose active person */

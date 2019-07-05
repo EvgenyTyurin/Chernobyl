@@ -21,9 +21,7 @@ public class ResourcesLoader {
     }
 
     public static ResourcesLoader getInstance(Context context) {
-        if (loader == null) {
-            loader = new ResourcesLoader(context);
-        }
+        loader = new ResourcesLoader(context);
         return loader;
     }
 
@@ -31,6 +29,7 @@ public class ResourcesLoader {
         return loader;
     }
 
+    /** @return String array string-array object in strings.xml */
     public ArrayList<String> getStringArray(String resourceName) {
         ArrayList<String> arrayList = new ArrayList<>();
         int resourceID = resources.

@@ -14,15 +14,7 @@ public class GameWorld {
 
     /** Creates game world */
     private GameWorld() {
-        WorldLoader.loadFromResources(this);
-        locationsPassages.add(new LocationsPassage(PassageOrientation.AXIS_Y,
-                "1st Floor Hall",
-                "Security Room",
-                this));
-        gamePersons.add(new GamePerson("Petrov",
-                worldLocations.get(0)));
-        gamePersons.add(new GamePerson("Akimov",
-                worldLocations.get(0)));
+        WorldLoader.loadWorldFromResources(this);
     }
 
     /** @return Current game world */
@@ -58,5 +50,9 @@ public class GameWorld {
 
     ArrayList<WorldLocation> getWorldLocations() {
         return worldLocations;
+    }
+
+    static ArrayList<LocationsPassage> getLocationsPassages() {
+        return locationsPassages;
     }
 }
