@@ -13,6 +13,7 @@ class WorldLoader {
     private static final String WORLD_LOCATIONS_ARRAY = "world_locations";
     private static final String LOCATIONS_PASSAGES_ARRAY = "locations_passages";
     private static final String LOCATION_BLOCKERS_ARRAY = "location_blockers";
+    private static final String GAME_ITEMS_ARRAY = "game_items";
     private static final String PERSONS_ARRAY = "persons";
 
     /**
@@ -46,8 +47,15 @@ class WorldLoader {
         for (String blockerStr : arrayStrings) {
             String[] blockerParams = blockerStr.split(";");
             world.getLocationByName(blockerParams[0]).setBlocker(
-                    new LocationBlocker(LocationBlockerType.valueOf(blockerParams[1]))
-            );
+                    new LocationBlocker(LocationBlockerType.valueOf(blockerParams[1])));
+        }
+        // Load game items
+        arrayStrings = ResourcesLoader.getInstance()
+                .getStringArray(GAME_ITEMS_ARRAY);
+        for(String itemStr : arrayStrings) {
+            String[] itemParams = itemStr.split(";");
+            world.getLocationByName(itemParams[1]).getGameItems().add(
+                    new GameItem(GameItemType.valueOf(itemParams[0])));
         }
         // Load persons
         arrayStrings = ResourcesLoader.getInstance()

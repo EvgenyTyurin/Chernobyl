@@ -12,6 +12,9 @@
     <string-array name="location_blockers">
         <item>1st Floor Stairwell;FIRE</item>
     </string-array>
+    <string-array name="game_items">
+        <item>EXTINGUISHER;Security Room</item>>
+    </string-array>
     <string-array name="persons">
         <item>Akimov;1st Floor Hall</item>
     </string-array>

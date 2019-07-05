@@ -1,5 +1,7 @@
 package com.tyurinevgeny.chernobyl.game_world;
 
+import java.util.ArrayList;
+
 class WorldLocation {
     private String name;
     private String label;
@@ -11,6 +13,7 @@ class WorldLocation {
     private WorldLocation upLocation;
     private WorldLocation downLocation;
     private LocationBlocker blocker;
+    private ArrayList<GameItem> gameItems = new ArrayList<>();
 
     WorldLocation(String name, String label, String description) {
         this.name = name;
@@ -41,6 +44,8 @@ class WorldLocation {
         }
         return passages;
     }
+
+    ArrayList<GameItem> getGameItems() { return gameItems; }
 
     public String getDescription() {
         return description;

@@ -27,6 +27,12 @@ public class GamePerson {
             message += "Blocker: " +
                     currentLocation.getBlocker().getBlockerType().toString() + ". ";
         }
+        if (currentLocation.getGameItems().size() > 0) {
+            message += "Items: ";
+            for (GameItem gameItem : currentLocation.getGameItems()) {
+                message += gameItem.type.toString() + ",";
+            }
+        }
         message += "Passages: " + currentLocation.getPassagesStr() + ". ";
         messageList.add(message);
     }

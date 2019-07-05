@@ -41,14 +41,11 @@
         android:id="@+id/messages_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:textAlignment="textStart"
-        app:layout_constraintBottom_toTopOf="@+id/control_buttons_layout"
-        app:layout_constraintTop_toBottomOf="@id/person_buttons_layout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintBottom_toTopOf="@+id/move_buttons_layout"
+        app:layout_constraintTop_toBottomOf="@id/person_buttons_layout" />
 
     <LinearLayout
-        android:id="@+id/control_buttons_layout"
+        android:id="@+id/move_buttons_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
